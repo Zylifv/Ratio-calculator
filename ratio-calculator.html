@@ -1,0 +1,31 @@
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="styles.css" rel="stylesheet">
+<title>Ratio adjustment calculator</title>
+  </head>
+    <body>
+      <h1>Ratio Adjustment Calculator</h1>
+        <div id="main">
+          <div id="mainform">
+            <h2>Convert formula below:</h2>
+            <p id="info">Please note, the current Diluent calculator only works on reducing the amount of diluent, not increasing it.</p>
+            <button id="add-btn" type="button">Add item</button>
+            <nav>
+              <form id="main-list">
+            <label for="diluent" id="diluent">Diluent:</label>
+            <input for="diluent" type="number" id="diluent-num" value="50"/>
+            <label for="chem1" id="chem1">1:</label>
+            <input for="chem1" type="number" id="1" class="chems" value="50"/>
+            </nav>
+            <div id="formula-total"></div>
+            <br>
+            <label for="diluent-new" id="diluent-new">New Diluent Value:</label>
+            <input for="diluent-new" type="number" id="diluent-new-num" value="45"/>
+            <button id="check-btn" type="button">Click to view new ratios</button>
+            <div id="new-formula-content"></div>
+              <div id="sig">- By R McGregor</div>
+        </div>
+      <script src="script.js"></script>
+</body>
+<html>
