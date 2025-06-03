@@ -1,0 +1,132 @@
+@media only screen and (max-width: 600px) {
+  body {
+    transform: scale(0.95);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  background-color: #c7b193;
+}
+
+h1 {
+  margin: auto;
+  text-align: center;
+  padding: 30px 10px 15px 10px;
+  font-size: 2em;
+  color: #fff;
+}
+
+h2 {
+  font-size: 1.3em;
+  padding-bottom: 10px;
+  margin-top: -10px;
+}
+
+#main {
+  margin: auto;
+  width: 400px;
+  height: 630px;
+  border: 5px solid #fff;
+  background-color: #f2e5d3;
+}
+
+#mainform {
+  margin: auto;
+  text-align: center;
+  margin-top: 30px;
+  text-align: center;
+  max-width: 300px;
+  font-weight: bold;
+  max-height: 500px;
+}
+
+input {
+  margin: auto;
+}
+
+#diluent-num, #diluent-new, #diluent-new-num, .chems {
+  display: block;
+  align-items: grid;
+  width: 80px;
+  margin: auto;
+  align-items: center;
+  border: none;
+  text-align: center;
+  font-weight: bold;
+}
+
+#diluent-num, #diluent-new, #diluent-new-num, .chems:focus {
+  outline: none;
+}
+
+#diluent, #chem1, #chem2, #chem3, #chem4, #chem5, #chem6, #chem7, #chem8, #chem9, #chem10, #chem11, #chem12, #chem13, #chem14, #chem15, #chem16, #chem17, #chem18, #chem19, #chem20, #chem21, #chem22, #chem23, #chem24, #chem25, #chem26, #chem27, #chem28, #chem29, #chem30, #chem31, #chem32, #chem33, #chem34, #chem35, #chem36, #chem37, #chem38, #chem39, #chem40,#diluent-new {
+  margin: auto;
+  float: left;
+  width: 180px;
+}
+
+#formula-total {
+  margin: auto;
+  float: center;
+  padding: 25px 0px 0px 0px;
+  text-align: center;
+}
+
+nav {
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 300px;
+}
+
+#new-formula-content {
+  margin: auto;
+  text-align: center;
+  margin-top: 40px;
+  width: 200px;
+}
+
+#check-btn {
+  margin: auto;
+  margin-top: 15px;
+  font-weight: bold;
+  border: 2px solid #c7b193;
+  height: 40px;
+}
+
+#add-btn {
+  margin: auto;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  border: 2px solid #c7b193;
+  height: 40px;
+}
+
+#check-btn:hover, #add-btn:hover {
+  box-shadow: 1px 2px #888888;
+}
+
+#info {
+  margin: auto;
+  padding-bottom: 20px;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+#main-list > input {
+  margin-bottom: 15px;
+}
+
+#sig {
+  margin: auto;
+  color: #f2e5d3;
+  position: relative;
+  text-align: center;
+  font-size: 0.6em;
+  letter-spacing: 0.25em;
+  padding-top: 10px;
+  padding-bottom: 25px;
+}
