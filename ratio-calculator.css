@@ -21,7 +21,7 @@ h1 {
 
 h2 {
   font-size: 1.3em;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   margin-top: -10px;
 }
 
@@ -65,7 +65,10 @@ input {
 #diluent, #chem1, #chem2, #chem3, #chem4, #chem5, #chem6, #chem7, #chem8, #chem9, #chem10, #chem11, #chem12, #chem13, #chem14, #chem15, #chem16, #chem17, #chem18, #chem19, #chem20, #chem21, #chem22, #chem23, #chem24, #chem25, #chem26, #chem27, #chem28, #chem29, #chem30, #chem31, #chem32, #chem33, #chem34, #chem35, #chem36, #chem37, #chem38, #chem39, #chem40,#diluent-new {
   margin: auto;
   float: left;
+  margin-right: -15px;
+  padding-right: 10px;
   width: 180px;
+  border: 1px solid transaprent;
 }
 
 #formula-total {
@@ -113,16 +116,32 @@ nav {
   margin: auto;
   padding-bottom: 20px;
   font-weight: 500;
-  font-size: 0.9em;
+  font-size: 0.7em;
+  text-align: center;
 }
 
 #main-list > input {
   margin-bottom: 15px;
 }
 
+.discard {
+  position: relative;
+  left: 150px;
+  max-width: 20px;
+  align-items: center;
+  border: none;
+  background-color: #e8401c;
+  color: #fff;
+  font-weight: bold;
+}
+
+.discard:hover {
+  background-color: #ed6a4e;
+}
+
 #sig {
   margin: auto;
-  color: #f2e5d3;
+  color: #f2e5dd;
   position: relative;
   text-align: center;
   font-size: 0.6em;
