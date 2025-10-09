@@ -21,6 +21,7 @@ addBtn.addEventListener("click", () => {
       newItemVal.setAttribute("for", `chem${idCount}`);
       newItemVal.classList.add("chems");
       newItemVal.setAttribute("value", "1");
+      newItemVal.setAttribute("min", "0.001");
       btn.classList.add("discard");
       btn.setAttribute("type", "button");
       btn.setAttribute("id", newItem.id);
