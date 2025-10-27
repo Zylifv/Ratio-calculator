@@ -5,17 +5,17 @@
 <title>Ratio adjustment calculator</title>
   </head>
     <body>
-      <h1>Ratio Adjustment Calculator</h1>
+      <h1><u>Ratio Adjustment Calculator</u></h1>
         <div id="main">
           <div id="mainform">
             <h2>Convert formula below:</h2>
-            <p id="info">Please note, the current Diluent calculator only works on reducing the amount of diluent, not increasing it.</p>
+            <p id="info">Please note, the current Diluent calculator only works on reducing the amount of diluent, not increasing it. For best results, have your original formula total 100%. When <u><b>removing items</b></u>, you can only remove from the bottom first.<br>Minimum diluent value must be 0.001%</p>
             <button id="add-btn" type="button">Add item</button>
             <nav>
               <form id="main-list">
             <label for="diluent" id="diluent">Diluent:</label>
             <input for="diluent" type="number" id="diluent-num" value="50"/>
-            <label for="chem1" id="chem1">1:</label>
+            <label for="chem1" id="chem1" class="chemNum">1:</label>
             <input for="chem1" type="number" id="1" class="chems" value="50"/>
             </nav>
             <div id="formula-total"></div>
