@@ -5,8 +5,8 @@ let idCount = 1;
 addBtn.addEventListener("click", () => {
 
     idCount++;//keeps track of what id to assign each new label & input
-  
-    if (idCount <= 100) {//prevents the number of items exceeding 100 as thats what the algorithm cap is for now.
+    idCount >= 100 ? addBtn.disabled = true : addBtn.disabled = false;
+    if (idCount <= 100) {//prevents the number of items exceeding n as thats what the algorithm cap is for now.
     
       //creates new labels and inputs based on when the user clicks the add button
     let newItem = document.createElement("label");
@@ -15,6 +15,7 @@ addBtn.addEventListener("click", () => {
     let btn = document.createElement("button");
       newItem.setAttribute("for", `chem${idCount}`);
       newItem.setAttribute("id", `chem${idCount}`);
+      newItem.classList.add("chemNum");
       newItemVal.setAttribute("type", "number");
       newItemVal.setAttribute("id", JSON.stringify(idCount));
       newItemVal.setAttribute("for", `chem${idCount}`);
@@ -29,20 +30,21 @@ addBtn.addEventListener("click", () => {
       newItem.appendChild(btn);
         document.getElementById("main-list").appendChild(newItem);
         document.getElementById("main-list").appendChild(newItemVal);
-      
-
+          //adds a remove button in case the user adds one too many input fields
         btn.onclick = function removeItem() {
         let parent = document.getElementById("main-list");
           if (btn.id === `chem${idCount}`) {
             parent.removeChild(document.getElementById(newItem.id));
             parent.removeChild(document.getElementById(newItemVal.id));
         idCount--;
+        idCount >= 100 ? addBtn.disabled = true : addBtn.disabled = false;
           }
        }
     } else {
       return;
     }
-});
+});  
+
 
 checkBtn.addEventListener("click", () => {
 
@@ -53,39 +55,38 @@ checkBtn.addEventListener("click", () => {
   const one = lowestVal / lowestVal;
   let ratiosArr = []; //array used for storing ratio values
   let newValArr = [];
-  
-  let formulaTotal = sum.reduce((acc, el) => acc + el, 0) + Number(document.getElementById("diluent-num").value);
-    /*this is to find out how many times the lowest value fits into the value of sum[i] and returns it. The ratio is the lowestVal and this gives me a number of how many times that val fits,
-    this will then give me a number to multiply against the new lowestVal later when it has been calculated.*/
-    sum.forEach(el => {
-      const sumDivided = el / lowestVal;
-      ratiosArr.push(Number(sumDivided.toFixed(3)));
-    })
-
+      
+    //adds the values in sum array and diluent number to (hopefully) equal 100.
+  let formulaTotal = sum.reduce((acc, el) => acc + el, 0) + Number(document.getElementById("diluent-num").value); 
+    //this is to find out how many times the lowest value fits into the value of sum[i] and returns it. the ratio is the lowestVal and this gives me a number of how many times that val fits, this will then give me a number to multiply against the new lowestVal later when it has been calculated.
+  sum.forEach(el => {
+    const sumDivided = el / lowestVal;
+    ratiosArr.push(Number(sumDivided.toFixed(3)));
+  });
+      
   const newArr = ratiosArr.filter(value => !Number.isNaN(value) );  //removes all 'null' values from array to stop it breaking
   let newRatioTotal = newArr.reduce((acc, el) => acc + el, 0);  //total value of all ratios added together
     //difference between curr and new diluent
   let diluentDiff = document.getElementById("diluent-num").value - document.getElementById("diluent-new-num").value;
     //remaining amount afer new diluent taken from total (or 100)
-  let remainderVal = 100 - document.getElementById("diluent-new-num").value;
+  let remainderVal = Number(100 - document.getElementById("diluent-new-num").value);
   let r = (remainderVal / newRatioTotal).toFixed(4);  //remainder divided by total ratio gives me the new 'lowestVal', i can now multiply each of the 'x'Val values by this to give me their new value that fits in with the new diluent to create an accurate formula that totals 100
   let newMulti = parseFloat(r);
     //using to.Fixed so recurring numbers get rounded to make readability easier
     newArr.forEach(el => {
-      const sumMultiplied = Number((el * newMulti).toFixed(3))
-      newValArr.push(sumMultiplied)
+      const sumMultiplied = el * newMulti
+      newValArr.push(Number(sumMultiplied.toFixed(3)))
     });
-
+      
     const newValArr2 = newValArr.filter(value => !Number.isNaN(value));
     let newValArrTotal = newValArr2.reduce((acc, el) => acc + el, 0); //totalling the new values
         //adding the new values to the new diluent value to return a complete (100) formulation
     let newTotal = (newValArrTotal + Number(document.getElementById("diluent-new-num").value)).toFixed(0);
-       
-    document.getElementById("diluent-num").value = document.getElementById("diluent-new-num").value;  //guaranteed to be displayed
-    document.getElementById("1").value = newValArr2[0]; //guaranteed to be displayed
-    for (let i = 2; i <= 30; i++) {
-      document.getElementById(`${i}`) ? document.getElementById(`${i}`).value = newValArr2[i-1] : "";
+        document.getElementById("diluent-num").value = document.getElementById("diluent-new-num").value;  //guaranteed to be displayed
+        document.getElementById("1").value = newValArr2[0].toFixed(3); //guaranteed to be displayed
+            for (let i = 2; i <= sum.length; i++) {
+                  document.getElementById(`${i}`) ? document.getElementById(`${i}`).value = newValArr2[i-1].toFixed(3) : "";
+            }
+        document.getElementById("formula-total").innerText = "Formula total: " + newTotal;  //formula total updated for completeness
     }
-    document.getElementById("formula-total").innerText = "Formula total: " + newTotal;  //formula total updated for completeness
-  }
 });
