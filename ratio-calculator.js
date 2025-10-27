@@ -2,6 +2,8 @@ const checkBtn = document.getElementById("check-btn");
 const addBtn = document.getElementById("add-btn");
 let idCount = 1;
 
+
+
 addBtn.addEventListener("click", () => {
 
     idCount++;//keeps track of what id to assign each new label & input
@@ -30,7 +32,8 @@ addBtn.addEventListener("click", () => {
       newItem.appendChild(btn);
         document.getElementById("main-list").appendChild(newItem);
         document.getElementById("main-list").appendChild(newItemVal);
-          //adds a remove button in case the user adds one too many input fields
+      
+
         btn.onclick = function removeItem() {
         let parent = document.getElementById("main-list");
           if (btn.id === `chem${idCount}`) {
@@ -43,11 +46,13 @@ addBtn.addEventListener("click", () => {
     } else {
       return;
     }
-});  
-
+});
+  
 
 checkBtn.addEventListener("click", () => {
 
+  let x = idCount >= 30 ? 4 : 3;
+  
   const sum = [...document.getElementsByClassName("chems")].map((i) => Number(i.value)); //gets the value of each .chems class and puts them into an array
   for (let i = 0; i < sum.length; i++) {
     
@@ -55,38 +60,40 @@ checkBtn.addEventListener("click", () => {
   const one = lowestVal / lowestVal;
   let ratiosArr = []; //array used for storing ratio values
   let newValArr = [];
-      
-    //adds the values in sum array and diluent number to (hopefully) equal 100.
+  
   let formulaTotal = sum.reduce((acc, el) => acc + el, 0) + Number(document.getElementById("diluent-num").value); 
+    //adds the values in sum array and diluent number to (hopefully) equal 100.
+
     //this is to find out how many times the lowest value fits into the value of sum[i] and returns it. the ratio is the lowestVal and this gives me a number of how many times that val fits, this will then give me a number to multiply against the new lowestVal later when it has been calculated.
-  sum.forEach(el => {
-    const sumDivided = el / lowestVal;
-    ratiosArr.push(Number(sumDivided.toFixed(3)));
-  });
-      
+    sum.forEach(el => {
+      const sumDivided = el / lowestVal;
+      ratiosArr.push(Number(sumDivided.toPrecision(x+2)));
+    })
+
   const newArr = ratiosArr.filter(value => !Number.isNaN(value) );  //removes all 'null' values from array to stop it breaking
   let newRatioTotal = newArr.reduce((acc, el) => acc + el, 0);  //total value of all ratios added together
     //difference between curr and new diluent
   let diluentDiff = document.getElementById("diluent-num").value - document.getElementById("diluent-new-num").value;
     //remaining amount afer new diluent taken from total (or 100)
   let remainderVal = Number(100 - document.getElementById("diluent-new-num").value);
-  let r = (remainderVal / newRatioTotal).toFixed(4);  //remainder divided by total ratio gives me the new 'lowestVal', i can now multiply each of the 'x'Val values by this to give me their new value that fits in with the new diluent to create an accurate formula that totals 100
+  let r = (remainderVal / newRatioTotal).toFixed(x+2);  //remainder divided by total ratio gives me the new 'lowestVal', i can now multiply each of the 'x'Val values by this to give me their new value that fits in with the new diluent to create an accurate formula that totals 100
   let newMulti = parseFloat(r);
     //using to.Fixed so recurring numbers get rounded to make readability easier
     newArr.forEach(el => {
       const sumMultiplied = el * newMulti
-      newValArr.push(Number(sumMultiplied.toFixed(3)))
+      newValArr.push(Number(sumMultiplied.toPrecision(x+2)))
     });
       
     const newValArr2 = newValArr.filter(value => !Number.isNaN(value));
     let newValArrTotal = newValArr2.reduce((acc, el) => acc + el, 0); //totalling the new values
-        //adding the new values to the new diluent value to return a complete (100) formulation
+    //adding the new values to the new diluent value to return a complete (100) formulation
     let newTotal = (newValArrTotal + Number(document.getElementById("diluent-new-num").value)).toFixed(0);
-        document.getElementById("diluent-num").value = document.getElementById("diluent-new-num").value;  //guaranteed to be displayed
-        document.getElementById("1").value = newValArr2[0].toFixed(3); //guaranteed to be displayed
-            for (let i = 2; i <= sum.length; i++) {
-                  document.getElementById(`${i}`) ? document.getElementById(`${i}`).value = newValArr2[i-1].toFixed(3) : "";
-            }
-        document.getElementById("formula-total").innerText = "Formula total: " + newTotal;  //formula total updated for completeness
+
+    document.getElementById("diluent-num").value = document.getElementById("diluent-new-num").value;  //guaranteed to be displayed
+    document.getElementById("1").value = newValArr2[0].toFixed(x); //guaranteed to be displayed
+    for (let i = 2; i <= sum.length; i++) {
+      document.getElementById(`${i}`) ? document.getElementById(`${i}`).value = newValArr2[i-1].toFixed(x) : "";
     }
+    document.getElementById("formula-total").innerText = "Formula total: " + newTotal;  //formula total updated for completeness
+  }
 });
