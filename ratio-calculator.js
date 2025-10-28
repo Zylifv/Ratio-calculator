@@ -96,4 +96,12 @@ checkBtn.addEventListener("click", () => {
     }
     document.getElementById("formula-total").innerText = "Formula total: " + newTotal;  //formula total updated for completeness
   }
+    tripleCheck();    //just to add an extra layer of accuracy
 });
+
+
+function tripleCheck() {
+  checkBtn.click();
+  checkBtn.click();
+  checkBtn.click();
+}
