@@ -105,3 +105,7 @@ function tripleCheck() {
   checkBtn.click();
   checkBtn.click();
 }
+
+function printThisPage() {
+  window.print();
+}
