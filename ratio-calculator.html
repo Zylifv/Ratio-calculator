@@ -9,20 +9,23 @@
         <div id="main">
           <div id="mainform">
             <h2>Convert formula below:</h2>
-            <p id="info">Please note, the current Diluent calculator only works on reducing the amount of diluent, not increasing it. For best results, have your original formula total 100%. When <u><b>removing items</b></u>, you can only remove from the bottom first.<br>Minimum diluent value must be 0.001%</p>
+            <p id="info">Please note, the current Diluent calculator only works on reducing the amount of diluent, not increasing it. For best results, have your original formula total 100%. When <u><b>removing items</b></u>, you can only remove from the bottom first.<br></p>
             <button id="add-btn" type="button">Add item</button>
             <nav>
               <form id="main-list">
+            <label for="formula-name" id="formulation-name">Code:</label>
+            <input for="formula-name" type="string" id="formula-name" maxLength="6"/>
             <label for="diluent" id="diluent">Diluent:</label>
-            <input for="diluent" type="number" id="diluent-num" value="50"/>
+            <input for="diluent" type="number" id="diluent-num" value="50" step="any" />
             <label for="chem1" id="chem1" class="chemNum">1:</label>
-            <input for="chem1" type="number" id="1" class="chems" value="50"/>
+            <input for="chem1" type="number" id="1" step="any" class="chems" value="50" />
             </nav>
             <div id="formula-total"></div>
             <br>
             <label for="diluent-new" id="diluent-new">New Diluent Value:</label>
-            <input for="diluent-new" type="number" id="diluent-new-num" value="45"/>
+            <input for="diluent-new" type="number" id="diluent-new-num" value="45" step="any" min="0.001"/>
             <button id="check-btn" type="button">Click to view new ratios</button>
+              <button id="print-page" onclick="printThisPage();">Print</button>
             <div id="new-formula-content"></div>
               <div id="sig">- By R McGregor</div>
         </div>
