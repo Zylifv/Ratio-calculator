@@ -197,4 +197,7 @@ nav {
     transform: translateX(-50%);
     top: 45px;
   }
+  .discard {
+    visibility: hidden;
+  }
 }
