@@ -80,11 +80,6 @@ input {
   border: 1px solid transaprent;
 }
 
-#chem1 {
-  width: 204px;
-  margin-left: -23px;
-}
-
 #chem100 {
   width: 185px;
   margin-left: -5px;
@@ -148,10 +143,14 @@ nav {
   margin-bottom: 15px;
 }
 
-.discard {
+label {
   position: relative;
+}
+
+.discard {
+  position: absolute;
   display: inline;
-  left: 60px;
+  left: 150px;
   max-width: 20px;
   align-items: center;
   border: none;
