@@ -10,11 +10,11 @@ addBtn.addEventListener("click", () => {
     idCount >= 100 ? addBtn.disabled = true : addBtn.disabled = false;
     if (idCount <= 100) {//prevents the number of items exceeding n as thats what the algorithm cap is for now.
     
-      //creates new labels and inputs based on when the user clicks the add button
+    //creates new labels and inputs based on when the user clicks the add button
     let newItem = document.createElement("label");
     let newItemContent = document.createTextNode(`${idCount}:`);
-    let newItemVal = document.createElement("input");
-    let btn = document.createElement("button");
+    let newItemVal = document.createElement("input"); //creates input element
+    let btn = document.createElement("button"); //creates btn element
       newItem.setAttribute("for", `chem${idCount}`);
       newItem.setAttribute("id", `chem${idCount}`);
       newItem.classList.add("chemNum");
@@ -36,10 +36,10 @@ addBtn.addEventListener("click", () => {
 
         btn.onclick = function removeItem() {
         let parent = document.getElementById("main-list");
-          if (btn.id === `chem${idCount}`) {
+          if (btn.id === `chem${idCount}`) { //targets only the intended btn
             parent.removeChild(document.getElementById(newItem.id));
             parent.removeChild(document.getElementById(newItemVal.id));
-        idCount--;
+        idCount--; //adjusts idCount for future adding/subtracting
         idCount >= 100 ? addBtn.disabled = true : addBtn.disabled = false;
           }
        }
@@ -51,7 +51,7 @@ addBtn.addEventListener("click", () => {
 
 checkBtn.addEventListener("click", () => {
 
-  let x = idCount >= 30 ? 4 : 3;
+  let x = idCount >= 30 ? 4 : 3; //changes the accuracy depending on the amount of inputs for increased accuracy
   
   const sum = [...document.getElementsByClassName("chems")].map((i) => Number(i.value)); //gets the value of each .chems class and puts them into an array
   for (let i = 0; i < sum.length; i++) {
@@ -100,12 +100,12 @@ checkBtn.addEventListener("click", () => {
 });
 
 
-function tripleCheck() {
+function tripleCheck() { //crunches the numbers down for extra accuracy because of JS rounding
   checkBtn.click();
   checkBtn.click();
   checkBtn.click();
 }
 
-function printThisPage() {
+function printThisPage() { //allows the user to print out the results for reference
   window.print();
 }
