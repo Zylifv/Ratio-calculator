@@ -5,12 +5,12 @@
 }
 
 :root {
-  --sand: #c7b193;
+  --sand: /*#c7b193*/ #ddb892;
   --white: #fff;
-  --cream: #f2e5d3;
+  --cream: /*#f2e5d3*/ #e6ccb2;
   --red: #e8401c;
   --light-red: #ed6a4e;
-  --off-white: #f2e5dd;
+  --off-white: /*#f2e5dd*/ #ede0d4;
 }
 
 body {
