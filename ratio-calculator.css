@@ -67,7 +67,7 @@ input {
   font-weight: bold;
 }
 
-#diluent-num, #diluent-new, #diluent-new-num, .chems:focus {
+#diluent-num, #diluent-new, #diluent-new-num, .chems:focus, #formula-name:focus {
   outline: none;
 }
 
