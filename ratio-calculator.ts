@@ -56,7 +56,7 @@ checkBtn.addEventListener("click", () => {
 
   let x : number = idCount >= 30 ? 4 : 3;
   
-  const sum : number[] = [...document.getElementsByClassName("chems")].map((i : any) => Number(i.value)); //gets the value of each .chems class and puts them into an array
+  const sum : number[] = [...(document.getElementsByClassName("chems") as any)].map((i : any) => Number(i.value)); //gets the value of each .chems class and puts them into an array
   for (let i : number = 0; i < sum.length; i++) {
     
   const lowestVal : number = Math.min(...sum); //finds lowest val that isnt null
@@ -80,7 +80,7 @@ checkBtn.addEventListener("click", () => {
       //remaining amount afer new diluent taken from total (or 100)
     let remainderVal : number = Number(100 - newDiluentNumInput.value);
     let r : number|string = (remainderVal / newRatioTotal).toFixed(x+2);  //remainder divided by total ratio gives me the new 'lowestVal', i can now multiply each of the 'x'Val values by this to give me their new value that fits in with the new diluent to create an accurate formula that totals 100
-    let newMulti : (number|string) = parseFloat(r);
+    let newMulti : any = parseFloat(r);
     //using to.Fixed so recurring numbers get rounded to make readability easier
     newArr.forEach(el => {
       const sumMultiplied = el * newMulti
