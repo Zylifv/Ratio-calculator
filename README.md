@@ -1,7 +1,7 @@
 # Ratio-calculator
 A ratio adjustment calculator for amending levels in formulae
 
-![Ratio-calculatorPNG](Ratio-calculatorPNG.png)
+![Ratio-calculatorPNG](Ratio-CalculatorPNG.png)
 
 I made this small ratio adjustment calculator for work, the smallest formulations can be two items long or as long as 100 so i made the option to add as many items (up to 100) as you need.
 
