@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+
 @media only screen and (max-width: 600px) {
   body {
     transform: scale(0.95);
@@ -16,7 +18,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: arial;
+  font-family: 'Droid Sans';
   background-color: var(--sand);
 }
 
@@ -40,6 +42,7 @@ h2 {
   height: 650px;
   border: 5px solid var(--white);
   background-color: var(--cream);
+  border-radius: 4px;
 }
 
 #mainform {
@@ -111,6 +114,7 @@ nav {
   margin-top: 15px;
   font-weight: bold;
   border: 2px solid var(--sand);
+  border-radius: 4px;
   height: 40px;
 }
 
@@ -120,6 +124,7 @@ nav {
   margin-bottom: 15px;
   font-weight: bold;
   border: 2px solid var(--sand);
+  border-radius: 4px;
   height: 40px;
 }
 
@@ -137,6 +142,7 @@ nav {
   font-weight: 500;
   font-size: 0.7em;
   text-align: center;
+  width: 300px;
 }
 
 #main-list > input {
@@ -160,7 +166,7 @@ label {
 }
 
 .discard:hover {
-  background-color: var(--light-red);
+  filter: saturate(200%);
 }
 
 #sig {
